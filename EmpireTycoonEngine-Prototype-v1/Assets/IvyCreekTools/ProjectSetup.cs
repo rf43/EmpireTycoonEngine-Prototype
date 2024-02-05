@@ -24,7 +24,8 @@ namespace IvyCreek.IvyCreekTools
                 "Scenes",
                 "Scripts",
                 "Scripts/Core",
-                "ScriptableObjects",
+                "Scripts/ScriptableObjects",
+                "Scripts/UI",
                 "Settings",
                 "Shaders",
                 "StreamingAssets",
@@ -33,18 +34,25 @@ namespace IvyCreek.IvyCreekTools
             
             UnityEditor.AssetDatabase.Refresh();
         }
-        
-        static class Folders
-        {
-            public static void CreateDefault(string root, params string[] folders)
-            {
+
+        private static class Folders {
+            public static void CreateDefault(string root, params string[] folders) {
                 var fullpath = Path.Combine(Application.dataPath, root);
-                foreach (var folder in folders)
-                {
-                    var path = Path.Combine(fullpath, folder);
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
+                if (!Directory.Exists(fullpath)) {
+                    Directory.CreateDirectory(fullpath);
+                }
+                foreach (var folder in folders) {
+                    CreateSubFolders(fullpath, folder);
+                }
+            }
+    
+            private static void CreateSubFolders(string rootPath, string folderHierarchy) {
+                var folders = folderHierarchy.Split('/');
+                var currentPath = rootPath;
+                foreach (var folder in folders) {
+                    currentPath = Path.Combine(currentPath, folder);
+                    if (!Directory.Exists(currentPath)) {
+                        Directory.CreateDirectory(currentPath);
                     }
                 }
             }
