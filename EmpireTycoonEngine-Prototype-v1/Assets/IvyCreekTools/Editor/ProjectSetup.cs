@@ -6,7 +6,7 @@ namespace IvyCreek.IvyCreekTools
 {
     public static class ProjectSetup
     {
-        [MenuItem("IvyCreek/Project Setup/Create Default Folders")]
+        [UnityEditor.MenuItem("IvyCreek/Project Setup/Create Default Folders")]
         public static void CreateDefaultFolders()
         {
             Folders.CreateDefault("EmpireTycoonEngine",
@@ -32,7 +32,7 @@ namespace IvyCreek.IvyCreekTools
                 "Textures"
             );
             
-            UnityEditor.AssetDatabase.Refresh();
+            AssetDatabase.Refresh();
         }
 
         private static class Folders {

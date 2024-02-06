@@ -3,6 +3,8 @@
 
 ### Android ###
 
+.utmp/
+
 # Gradle files
 .gradle/
 build/
