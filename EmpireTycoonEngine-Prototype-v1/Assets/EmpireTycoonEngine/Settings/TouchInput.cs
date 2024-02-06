@@ -24,13 +24,13 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
     ""name"": ""TouchInput"",
     ""maps"": [
         {
-            ""name"": ""Zoom"",
-            ""id"": ""7d9f2227-5015-4061-8d35-ef2cfc85aa75"",
+            ""name"": ""TouchScreenGamePlay"",
+            ""id"": ""78657e32-cd42-4576-a9ec-c3c975503740"",
             ""actions"": [
                 {
                     ""name"": ""PrimaryFingerPosition"",
                     ""type"": ""Value"",
-                    ""id"": ""40ea248a-d6ef-4f62-a439-45fbfc454539"",
+                    ""id"": ""1fc44d7d-d4ed-4a85-b949-9b94606c3a24"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -39,7 +39,7 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""SecondaryFingerPosition"",
                     ""type"": ""Value"",
-                    ""id"": ""6f87ded1-62f2-408c-a731-03697d6b03d3"",
+                    ""id"": ""a0a259cf-a00b-4d04-bb07-61662576163c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -48,17 +48,26 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""SecondaryTouchContact"",
                     ""type"": ""Button"",
-                    ""id"": ""53c6bf87-ab14-4067-8495-432e84edb777"",
+                    ""id"": ""1c2fe767-195e-48aa-b08c-895128a9226e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryFingerTap"",
+                    ""type"": ""Button"",
+                    ""id"": ""331d9053-8103-411f-9267-c02a94e27d32"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""e8d33e6a-0557-43fd-9c02-51f1f633b9fb"",
+                    ""id"": ""2f8906a0-cfb0-4395-a8d6-43adcf25b5b1"",
                     ""path"": ""<Touchscreen>/touch0/position"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -69,7 +78,7 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1d9d0671-f888-4ef8-8c2f-0bfe5af3ec00"",
+                    ""id"": ""b21bc3cc-9d4c-4780-ac71-02bc42789077"",
                     ""path"": ""<Touchscreen>/touch1/position"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -80,7 +89,7 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e8daf5f4-d9cb-4607-a667-903d798583b6"",
+                    ""id"": ""263ed6e0-75ca-4bab-aa7d-86f08b748d81"",
                     ""path"": ""<Touchscreen>/touch1/press"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -88,52 +97,15 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                     ""action"": ""SecondaryTouchContact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Touch"",
-            ""id"": ""683f6db7-24be-4922-98fd-185d46ab9302"",
-            ""actions"": [
-                {
-                    ""name"": ""TouchInput"",
-                    ""type"": ""Value"",
-                    ""id"": ""1d7912d8-1677-45ad-bbfd-420265607344"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Tap"",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""TouchAndHold"",
-                    ""type"": ""Button"",
-                    ""id"": ""9423183b-c0ff-4bff-ada9-191f81ac3f4a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""ede9fa46-00ef-48ef-96c7-7fafa96be841"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TouchInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""63f863b2-3f3a-418f-a199-28031987787b"",
-                    ""path"": ""<Touchscreen>/touch0/press"",
-                    ""interactions"": """",
+                    ""id"": ""e5a90c95-ec54-46d5-8adb-8f77fc9cb279"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TouchAndHold"",
+                    ""groups"": ""MobileTouchScheme"",
+                    ""action"": ""PrimaryFingerTap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -148,15 +120,12 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Zoom
-        m_Zoom = asset.FindActionMap("Zoom", throwIfNotFound: true);
-        m_Zoom_PrimaryFingerPosition = m_Zoom.FindAction("PrimaryFingerPosition", throwIfNotFound: true);
-        m_Zoom_SecondaryFingerPosition = m_Zoom.FindAction("SecondaryFingerPosition", throwIfNotFound: true);
-        m_Zoom_SecondaryTouchContact = m_Zoom.FindAction("SecondaryTouchContact", throwIfNotFound: true);
-        // Touch
-        m_Touch = asset.FindActionMap("Touch", throwIfNotFound: true);
-        m_Touch_TouchInput = m_Touch.FindAction("TouchInput", throwIfNotFound: true);
-        m_Touch_TouchAndHold = m_Touch.FindAction("TouchAndHold", throwIfNotFound: true);
+        // TouchScreenGamePlay
+        m_TouchScreenGamePlay = asset.FindActionMap("TouchScreenGamePlay", throwIfNotFound: true);
+        m_TouchScreenGamePlay_PrimaryFingerPosition = m_TouchScreenGamePlay.FindAction("PrimaryFingerPosition", throwIfNotFound: true);
+        m_TouchScreenGamePlay_SecondaryFingerPosition = m_TouchScreenGamePlay.FindAction("SecondaryFingerPosition", throwIfNotFound: true);
+        m_TouchScreenGamePlay_SecondaryTouchContact = m_TouchScreenGamePlay.FindAction("SecondaryTouchContact", throwIfNotFound: true);
+        m_TouchScreenGamePlay_PrimaryFingerTap = m_TouchScreenGamePlay.FindAction("PrimaryFingerTap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -215,28 +184,30 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Zoom
-    private readonly InputActionMap m_Zoom;
-    private List<IZoomActions> m_ZoomActionsCallbackInterfaces = new List<IZoomActions>();
-    private readonly InputAction m_Zoom_PrimaryFingerPosition;
-    private readonly InputAction m_Zoom_SecondaryFingerPosition;
-    private readonly InputAction m_Zoom_SecondaryTouchContact;
-    public struct ZoomActions
+    // TouchScreenGamePlay
+    private readonly InputActionMap m_TouchScreenGamePlay;
+    private List<ITouchScreenGamePlayActions> m_TouchScreenGamePlayActionsCallbackInterfaces = new List<ITouchScreenGamePlayActions>();
+    private readonly InputAction m_TouchScreenGamePlay_PrimaryFingerPosition;
+    private readonly InputAction m_TouchScreenGamePlay_SecondaryFingerPosition;
+    private readonly InputAction m_TouchScreenGamePlay_SecondaryTouchContact;
+    private readonly InputAction m_TouchScreenGamePlay_PrimaryFingerTap;
+    public struct TouchScreenGamePlayActions
     {
         private @TouchInput m_Wrapper;
-        public ZoomActions(@TouchInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PrimaryFingerPosition => m_Wrapper.m_Zoom_PrimaryFingerPosition;
-        public InputAction @SecondaryFingerPosition => m_Wrapper.m_Zoom_SecondaryFingerPosition;
-        public InputAction @SecondaryTouchContact => m_Wrapper.m_Zoom_SecondaryTouchContact;
-        public InputActionMap Get() { return m_Wrapper.m_Zoom; }
+        public TouchScreenGamePlayActions(@TouchInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PrimaryFingerPosition => m_Wrapper.m_TouchScreenGamePlay_PrimaryFingerPosition;
+        public InputAction @SecondaryFingerPosition => m_Wrapper.m_TouchScreenGamePlay_SecondaryFingerPosition;
+        public InputAction @SecondaryTouchContact => m_Wrapper.m_TouchScreenGamePlay_SecondaryTouchContact;
+        public InputAction @PrimaryFingerTap => m_Wrapper.m_TouchScreenGamePlay_PrimaryFingerTap;
+        public InputActionMap Get() { return m_Wrapper.m_TouchScreenGamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ZoomActions set) { return set.Get(); }
-        public void AddCallbacks(IZoomActions instance)
+        public static implicit operator InputActionMap(TouchScreenGamePlayActions set) { return set.Get(); }
+        public void AddCallbacks(ITouchScreenGamePlayActions instance)
         {
-            if (instance == null || m_Wrapper.m_ZoomActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_ZoomActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_TouchScreenGamePlayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TouchScreenGamePlayActionsCallbackInterfaces.Add(instance);
             @PrimaryFingerPosition.started += instance.OnPrimaryFingerPosition;
             @PrimaryFingerPosition.performed += instance.OnPrimaryFingerPosition;
             @PrimaryFingerPosition.canceled += instance.OnPrimaryFingerPosition;
@@ -246,9 +217,12 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
             @SecondaryTouchContact.started += instance.OnSecondaryTouchContact;
             @SecondaryTouchContact.performed += instance.OnSecondaryTouchContact;
             @SecondaryTouchContact.canceled += instance.OnSecondaryTouchContact;
+            @PrimaryFingerTap.started += instance.OnPrimaryFingerTap;
+            @PrimaryFingerTap.performed += instance.OnPrimaryFingerTap;
+            @PrimaryFingerTap.canceled += instance.OnPrimaryFingerTap;
         }
 
-        private void UnregisterCallbacks(IZoomActions instance)
+        private void UnregisterCallbacks(ITouchScreenGamePlayActions instance)
         {
             @PrimaryFingerPosition.started -= instance.OnPrimaryFingerPosition;
             @PrimaryFingerPosition.performed -= instance.OnPrimaryFingerPosition;
@@ -259,77 +233,26 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
             @SecondaryTouchContact.started -= instance.OnSecondaryTouchContact;
             @SecondaryTouchContact.performed -= instance.OnSecondaryTouchContact;
             @SecondaryTouchContact.canceled -= instance.OnSecondaryTouchContact;
+            @PrimaryFingerTap.started -= instance.OnPrimaryFingerTap;
+            @PrimaryFingerTap.performed -= instance.OnPrimaryFingerTap;
+            @PrimaryFingerTap.canceled -= instance.OnPrimaryFingerTap;
         }
 
-        public void RemoveCallbacks(IZoomActions instance)
+        public void RemoveCallbacks(ITouchScreenGamePlayActions instance)
         {
-            if (m_Wrapper.m_ZoomActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_TouchScreenGamePlayActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IZoomActions instance)
+        public void SetCallbacks(ITouchScreenGamePlayActions instance)
         {
-            foreach (var item in m_Wrapper.m_ZoomActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_TouchScreenGamePlayActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_ZoomActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_TouchScreenGamePlayActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public ZoomActions @Zoom => new ZoomActions(this);
-
-    // Touch
-    private readonly InputActionMap m_Touch;
-    private List<ITouchActions> m_TouchActionsCallbackInterfaces = new List<ITouchActions>();
-    private readonly InputAction m_Touch_TouchInput;
-    private readonly InputAction m_Touch_TouchAndHold;
-    public struct TouchActions
-    {
-        private @TouchInput m_Wrapper;
-        public TouchActions(@TouchInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @TouchInput => m_Wrapper.m_Touch_TouchInput;
-        public InputAction @TouchAndHold => m_Wrapper.m_Touch_TouchAndHold;
-        public InputActionMap Get() { return m_Wrapper.m_Touch; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TouchActions set) { return set.Get(); }
-        public void AddCallbacks(ITouchActions instance)
-        {
-            if (instance == null || m_Wrapper.m_TouchActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_TouchActionsCallbackInterfaces.Add(instance);
-            @TouchInput.started += instance.OnTouchInput;
-            @TouchInput.performed += instance.OnTouchInput;
-            @TouchInput.canceled += instance.OnTouchInput;
-            @TouchAndHold.started += instance.OnTouchAndHold;
-            @TouchAndHold.performed += instance.OnTouchAndHold;
-            @TouchAndHold.canceled += instance.OnTouchAndHold;
-        }
-
-        private void UnregisterCallbacks(ITouchActions instance)
-        {
-            @TouchInput.started -= instance.OnTouchInput;
-            @TouchInput.performed -= instance.OnTouchInput;
-            @TouchInput.canceled -= instance.OnTouchInput;
-            @TouchAndHold.started -= instance.OnTouchAndHold;
-            @TouchAndHold.performed -= instance.OnTouchAndHold;
-            @TouchAndHold.canceled -= instance.OnTouchAndHold;
-        }
-
-        public void RemoveCallbacks(ITouchActions instance)
-        {
-            if (m_Wrapper.m_TouchActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(ITouchActions instance)
-        {
-            foreach (var item in m_Wrapper.m_TouchActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_TouchActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public TouchActions @Touch => new TouchActions(this);
+    public TouchScreenGamePlayActions @TouchScreenGamePlay => new TouchScreenGamePlayActions(this);
     private int m_MobileTouchSchemeSchemeIndex = -1;
     public InputControlScheme MobileTouchSchemeScheme
     {
@@ -339,15 +262,11 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_MobileTouchSchemeSchemeIndex];
         }
     }
-    public interface IZoomActions
+    public interface ITouchScreenGamePlayActions
     {
         void OnPrimaryFingerPosition(InputAction.CallbackContext context);
         void OnSecondaryFingerPosition(InputAction.CallbackContext context);
         void OnSecondaryTouchContact(InputAction.CallbackContext context);
-    }
-    public interface ITouchActions
-    {
-        void OnTouchInput(InputAction.CallbackContext context);
-        void OnTouchAndHold(InputAction.CallbackContext context);
+        void OnPrimaryFingerTap(InputAction.CallbackContext context);
     }
 }

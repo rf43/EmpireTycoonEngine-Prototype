@@ -1781,10 +1781,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _touchInputReader: {fileID: 11400000, guid: d17f83def60f6422680bad89ce864ea3, type: 2}
   _camera: {fileID: 286047238}
-  _zoomSpeed: 350
+  _zoomSpeed: 600
   _minZoomLevel: 10
-  _maxZoomLevel: 25
-  _smoothTime: 1
+  _maxZoomLevel: 30
+  _smoothTime: 0.5
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

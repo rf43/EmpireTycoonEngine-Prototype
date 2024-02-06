@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using Cinemachine;
 using IvyCreek.EmpireTycoonEngine.Input;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace IvyCreek.EmpireTycoonEngine.Scripts
 {
@@ -19,7 +21,12 @@ namespace IvyCreek.EmpireTycoonEngine.Scripts
                  "A higher value will result in a slower but smoother transition.")]
         private float _smoothTime = 0.3f;
 
+        private bool _isZooming;
         private Coroutine _zoomCoroutine;
+
+        private bool _isTrackingPrimaryFingerPosition;
+        private Coroutine _trackPrimaryFingerPositionCoroutine;
+
         private Vector2 _primaryFingerPosition;
         private Vector2 _secondaryFingerPosition;
 
@@ -29,6 +36,7 @@ namespace IvyCreek.EmpireTycoonEngine.Scripts
             _touchInputReader.PrimaryFingerPosition += OnPrimaryFingerPosition;
             _touchInputReader.SecondaryFingerPosition += OnSecondaryFingerPosition;
             _touchInputReader.SecondaryTouchContact += OnSecondaryTouchContact;
+            _touchInputReader.PrimaryFingerTap += OnPrimaryFingerTap;
         }
 
         private void OnDisable()
@@ -36,6 +44,7 @@ namespace IvyCreek.EmpireTycoonEngine.Scripts
             _touchInputReader.PrimaryFingerPosition -= OnPrimaryFingerPosition;
             _touchInputReader.SecondaryFingerPosition -= OnSecondaryFingerPosition;
             _touchInputReader.SecondaryTouchContact -= OnSecondaryTouchContact;
+            _touchInputReader.PrimaryFingerTap -= OnPrimaryFingerTap;
         }
 
         private void OnPrimaryFingerPosition(Vector2 pos)
@@ -48,15 +57,52 @@ namespace IvyCreek.EmpireTycoonEngine.Scripts
             _secondaryFingerPosition = pos;
         }
 
-        private void OnSecondaryTouchContact(bool touchStarted)
+        private void OnSecondaryTouchContact(bool started)
         {
-            if (touchStarted)
+            if (started)
             {
+                _isZooming = true;
                 _zoomCoroutine = StartCoroutine(ZoomCamera());
             }
             else
             {
+                _isZooming = false;
                 StopCoroutine(_zoomCoroutine);
+            }
+        }
+        
+        private void OnPrimaryFingerTap(InputAction action)
+        {
+            switch (action.phase)
+            {
+                case InputActionPhase.Performed:
+                    if (!_isTrackingPrimaryFingerPosition)
+                    {
+                        _isTrackingPrimaryFingerPosition = true;
+                        _trackPrimaryFingerPositionCoroutine = StartCoroutine(TrackPrimaryFingerPosition());
+                    }
+                    break;
+                case InputActionPhase.Canceled:
+                    _isTrackingPrimaryFingerPosition = false;
+                    StopCoroutine(_trackPrimaryFingerPositionCoroutine);
+                    break;
+                
+                // Not needed at this time
+                case InputActionPhase.Started:
+                case InputActionPhase.Waiting:
+                case InputActionPhase.Disabled:
+                default:
+                    break;
+            }
+        }
+        
+        private IEnumerator TrackPrimaryFingerPosition()
+        {
+            while (_isTrackingPrimaryFingerPosition)
+            {
+                Debug.Log("RF43: Tracking primary finger position");
+                Debug.Log("RF43: Primary finger position: " + _primaryFingerPosition);
+                yield return new WaitForSeconds(1f);
             }
         }
 
@@ -65,7 +111,7 @@ namespace IvyCreek.EmpireTycoonEngine.Scripts
             float previousDistance = 0;
             var velocity = 0.0F;
 
-            while (true)
+            while (_isZooming)
             {
                 var distance = Vector2.Distance(_primaryFingerPosition, _secondaryFingerPosition);
 

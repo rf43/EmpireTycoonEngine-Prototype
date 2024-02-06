@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -7,13 +6,12 @@ using static TouchInput;
 namespace IvyCreek.EmpireTycoonEngine.Input
 {
     [CreateAssetMenu(fileName = "TouchInputReader", menuName = "EmpireTycoonEngine/Input/TouchInputReader")]
-    public class TouchInputReader : ScriptableObject, IZoomActions, ITouchActions
+    public class TouchInputReader : ScriptableObject, ITouchScreenGamePlayActions
     {
-        public event UnityAction<Vector2> PrimaryFingerPosition = delegate { }; 
-        public event UnityAction<Vector2> SecondaryFingerPosition = delegate { };
-        public event UnityAction<bool> SecondaryTouchContact = delegate { };
-        public event UnityAction<bool> TouchInput = delegate { };
-        public event UnityAction<bool> TouchAndHold = delegate { };
+        public event UnityAction<Vector2> PrimaryFingerPosition; 
+        public event UnityAction<Vector2> SecondaryFingerPosition;
+        public event UnityAction<bool> SecondaryTouchContact;
+        public event UnityAction<InputAction> PrimaryFingerTap;
         
         private TouchInput _touchInputActions;
         
@@ -21,34 +19,34 @@ namespace IvyCreek.EmpireTycoonEngine.Input
         {
             if (_touchInputActions != null) return;
             _touchInputActions = new TouchInput();
-            _touchInputActions.Zoom.SetCallbacks(this);
-            _touchInputActions.Touch.SetCallbacks(this);
             _touchInputActions.Enable();
+            _touchInputActions.TouchScreenGamePlay.SetCallbacks(this);
+        }
+        
+        private void OnDisable()
+        {
+            _touchInputActions.TouchScreenGamePlay.RemoveCallbacks(this);
+            _touchInputActions.Disable();
         }
 
         public void OnPrimaryFingerPosition(InputAction.CallbackContext context)
         {
-            PrimaryFingerPosition.Invoke(context.ReadValue<Vector2>());
+            PrimaryFingerPosition?.Invoke(context.ReadValue<Vector2>());
         }
-
+        
         public void OnSecondaryFingerPosition(InputAction.CallbackContext context)
         {
-            SecondaryFingerPosition.Invoke(context.ReadValue<Vector2>());
+            SecondaryFingerPosition?.Invoke(context.ReadValue<Vector2>());
         }
-
+        
         public void OnSecondaryTouchContact(InputAction.CallbackContext context)
         {
-            SecondaryTouchContact.Invoke(context.ReadValueAsButton());
+            SecondaryTouchContact?.Invoke(context.ReadValueAsButton());
         }
 
-        public void OnTouchInput(InputAction.CallbackContext context)
+        public void OnPrimaryFingerTap(InputAction.CallbackContext context)
         {
-            TouchInput.Invoke(context.ReadValueAsButton());
-        }
-
-        public void OnTouchAndHold(InputAction.CallbackContext context)
-        {
-            TouchAndHold.Invoke(context.ReadValueAsButton());
+            PrimaryFingerTap?.Invoke(context.action);
         }
     }
 }
