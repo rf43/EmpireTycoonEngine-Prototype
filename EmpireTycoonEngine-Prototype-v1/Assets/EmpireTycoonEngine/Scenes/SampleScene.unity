@@ -1735,56 +1735,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1845927555}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &403184396
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 403184397}
-  - component: {fileID: 403184398}
-  m_Layer: 0
-  m_Name: CameraManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &403184397
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403184396}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1134164049}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &403184398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403184396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24d889c54a4c46c7b68fc0c2bd2e2dec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _touchInputReader: {fileID: 11400000, guid: d17f83def60f6422680bad89ce864ea3, type: 2}
-  _camera: {fileID: 286047238}
-  _zoomSpeed: 600
-  _minZoomLevel: 10
-  _maxZoomLevel: 30
-  _smoothTime: 0.5
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,6 +3181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1134164049}
+  - component: {fileID: 1134164050}
   m_Layer: 0
   m_Name: CameraSystem
   m_TagString: Untagged
@@ -3251,13 +3202,30 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 403184397}
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 1315178787}
   - {fileID: 286047237}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1134164050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134164048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d889c54a4c46c7b68fc0c2bd2e2dec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _touchInputReader: {fileID: 11400000, guid: 28419ef3eb7854ecc8626709eef9b9ef, type: 2}
+  _camera: {fileID: 286047238}
+  _zoomSpeed: 650
+  _minZoomLevel: 10
+  _maxZoomLevel: 30
+  _smoothTime: 0.3
 --- !u!1 &1139209624
 GameObject:
   m_ObjectHideFlags: 0

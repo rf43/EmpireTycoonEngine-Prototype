@@ -2,11 +2,11 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-namespace IvyCreek.IvyCreekTools
+namespace IvyCreek.Tools.Project
 {
     public static class ProjectSetup
     {
-        [UnityEditor.MenuItem("IvyCreek/Project Setup/Create Default Folders")]
+        [MenuItem("IvyCreek/Project Setup/Create Default Folders")]
         public static void CreateDefaultFolders()
         {
             Folders.CreateDefault("EmpireTycoonEngine",

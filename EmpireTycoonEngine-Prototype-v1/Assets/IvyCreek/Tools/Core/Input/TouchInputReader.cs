@@ -3,9 +3,9 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static TouchInput;
 
-namespace IvyCreek.EmpireTycoonEngine.Input
+namespace IvyCreek.Tools.Core.Input
 {
-    [CreateAssetMenu(fileName = "TouchInputReader", menuName = "EmpireTycoonEngine/Input/TouchInputReader")]
+    [CreateAssetMenu(fileName = "TouchInputReader", menuName = "IvyCreek/Tools/Input/TouchInputReader")]
     public class TouchInputReader : ScriptableObject, ITouchScreenGamePlayActions
     {
         public event UnityAction<Vector2> PrimaryFingerPosition; 

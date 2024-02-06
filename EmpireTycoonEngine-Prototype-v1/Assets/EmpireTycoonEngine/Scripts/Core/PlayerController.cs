@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace IvyCreek.EmpireTycoonEngine.Scripts
+namespace EmpireTycoonEngine.Scripts.Core
 {
     public class PlayerController : MonoBehaviour
     {

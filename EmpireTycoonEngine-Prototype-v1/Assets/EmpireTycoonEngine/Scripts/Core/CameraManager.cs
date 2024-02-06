@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using Cinemachine;
-using IvyCreek.EmpireTycoonEngine.Input;
+using IvyCreek.Tools.Core.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace IvyCreek.EmpireTycoonEngine.Scripts
+namespace EmpireTycoonEngine.Scripts.Core
 {
     [AddComponentMenu(menuName: "EmpireTycoonEngine/Scripts/CameraManager")]
     public class CameraManager : MonoBehaviour

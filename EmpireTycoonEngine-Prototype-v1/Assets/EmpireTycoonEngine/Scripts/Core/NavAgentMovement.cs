@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
-namespace IvyCreek.EmpireTycoonEngine.Scripts
+namespace EmpireTycoonEngine.Scripts.Core
 {
     [AddComponentMenu(menuName: "EmpireTycoonEngine/Scripts/NavAgentMovement")]
     [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
