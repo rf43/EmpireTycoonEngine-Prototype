@@ -62,7 +62,7 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Touchscreen>/touch0/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""MobileTouchScheme"",
                     ""action"": ""PrimaryFingerPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -73,7 +73,7 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Touchscreen>/touch1/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""MobileTouchScheme"",
                     ""action"": ""SecondaryFingerPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -84,7 +84,7 @@ public partial class @TouchInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Touchscreen>/touch1/press"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""MobileTouchScheme"",
                     ""action"": ""SecondaryTouchContact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
