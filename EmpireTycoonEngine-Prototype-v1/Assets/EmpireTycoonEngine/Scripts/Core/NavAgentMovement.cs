@@ -9,6 +9,11 @@ namespace EmpireTycoonEngine.Scripts.Core
     [RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
     public class NavAgentMovement : MonoBehaviour
     {
+        private const float XAxisMinRange = -10;
+        private const float XAxisMaxRange = 10f;
+        private const float ZAxisMinRange = -20f;
+        private const float ZAxisMaxRange = 25f;
+
         [SerializeField] private float _walkSpeed = 1.5f;
         [SerializeField] private float _runSpeed = 1.5f;
         [SerializeField] private float _minDistance = 2f;
@@ -18,9 +23,9 @@ namespace EmpireTycoonEngine.Scripts.Core
 
         private NavMeshAgent _navMeshAgent;
         private Animator _animator;
-        
+
         private static readonly int Speed = Animator.StringToHash("Speed");
-        
+
 
         private void Awake()
         {
@@ -32,11 +37,6 @@ namespace EmpireTycoonEngine.Scripts.Core
         {
             StartCoroutine(TargetWanderAround());
         }
-
-        private const float MinRange = -30f;
-        private const float MaxRange = 10f;
-        private const float ZAxisMinRange = -11f;
-        private const float ZAxisMaxRange = 11f;
 
         private IEnumerator TargetWanderAround()
         {
@@ -75,9 +75,10 @@ namespace EmpireTycoonEngine.Scripts.Core
             _animator.SetFloat(Speed, animationSpeed);
         }
 
-        private Vector3 GenerateRandomPosition()
+        private static Vector3 GenerateRandomPosition()
         {
-            return new Vector3(Random.Range(MinRange, MaxRange), 0, Random.Range(ZAxisMinRange, ZAxisMaxRange));
+            return new Vector3(Random.Range(XAxisMinRange, XAxisMaxRange), 0,
+                Random.Range(ZAxisMinRange, ZAxisMaxRange));
         }
     }
 }
