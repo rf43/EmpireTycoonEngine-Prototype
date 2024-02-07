@@ -1,7 +1,7 @@
 ---
 name: Documentation Request
 about: Suggest something to document
-title: "[DOCUMENTATION]"
+title: ''
 labels: documentation
 assignees: rf43
 
